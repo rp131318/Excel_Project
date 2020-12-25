@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#AC3A16</color>
+    <color name="colorPrimaryDark">#AC3A16</color>
+    <color name="colorAccent">#FF5722</color>
+    <color name="absent">#F44336</color>
+    <color name="present">#4CAF50</color>
+</resources>

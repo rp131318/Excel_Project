@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Excel Project</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="phone">Phone</string>
+    <string name="register">Register</string>
+    <string name="input_error_name">name required</string>
+    <string name="input_error_email">email required</string>
+    <string name="input_error_password">password required</string>
+    <string name="input_error_phone">phone required</string>
+    <string name="input_error_password_length">password should be atleast 6 characters long</string>
+    <string name="input_error_phone_invalid">enter a valid phone number</string>
+    <string name="registration_success">Registered Successfully</string>
+    <string name="input_error_email_invalid">enter a valid email</string>
+
+    <string name="instruction">Please set expected caller app package name and fingerprint in strings.xml</string>
+    <string name="calling_app_package_name">com.example.myapplication</string>
+    <string name="calling_app_fingerprint"> A9:CD:71:D1:57:02:62:AB:A1:3D:0A:49:19:36:BA:39:F2:ED:AC:FD:0C:E3:AF:15:F4:A1:26:6D:1A:7D:78:A4</string>
+    <string name="pkgSenderName">Sender App Package Name</string>
+    <string name="fingerprintLabel">Sender App Fingerprint</string>
+    <string name="selectResponseText">Select Response</string>
+    <string name="option1">RESULT_OK empty Auth_Code</string>
+    <string name="option2">RESULT_OK with Auth_Code</string>
+    <string name="option3">RESULT_CANCELLED</string>
+    <string name="option4">Recoverable Error with Code</string>
+    <string name="option5">Unrecoverable - User Not Consent</string>
+    <string name="option6">Unrecoverable Error with Code</string>
+    <string name="option7">Invalid Request with Code</string>
+    <string name="errorCodeLabel">Error Code</string>
+    <string name="submitButton">Send</string>
+    <string name="server_client_id">333382292823-ljtd4jrgecl2vq59htloveut0qcs7l0k.apps.googleusercontent.com</string>
+</resources>

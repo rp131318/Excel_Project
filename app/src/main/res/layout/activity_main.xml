@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:paddingVertical="10dp"
+            android:fontFamily="@font/cardo"
+            android:text="Create Account"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="60dp"
+                app:hintEnabled="true"
+                app:hintAnimationEnabled="true"
+                tools:layout_editor_absoluteX="30dp">
+
+                <EditText
+                    android:id="@+id/edit_text_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/full_name"
+                    android:fontFamily="@font/cardo"
+                    android:nextFocusDown="@id/edit_text_email"
+                    android:paddingVertical="8dp"
+                    android:paddingLeft="10dp"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="8dp"
+                app:hintEnabled="true"
+                app:hintAnimationEnabled="true"
+                tools:layout_editor_absoluteX="30dp">
+
+
+                <EditText
+                    android:id="@+id/edit_text_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/cardo"
+                    android:nextFocusDown="@id/edit_text_password"
+                    android:paddingVertical="8dp"
+                    android:paddingLeft="10dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="8dp"
+                app:hintEnabled="true"
+                app:hintAnimationEnabled="true"
+                tools:layout_editor_absoluteX="30dp">
+
+                <EditText
+                    android:id="@+id/edit_text_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:fontFamily="@font/cardo"
+                    android:nextFocusDown="@id/edit_text_phone"
+                    android:paddingVertical="8dp"
+                    android:paddingLeft="10dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="8dp"
+                tools:layout_editor_absoluteX="30dp">
+                <EditText
+                    android:id="@+id/edit_text_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:hint="@string/phone"
+                    android:inputType="number"
+                    android:fontFamily="@font/cardo"
+                    android:maxLength="10"
+                    android:nextFocusDown="@id/button_register"
+                    android:paddingVertical="8dp"
+                    android:paddingLeft="10dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="8dp"
+                tools:layout_editor_absoluteX="30dp">
+                <EditText
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Age"
+                    android:inputType="number"
+                    android:paddingVertical="8dp"
+                    android:fontFamily="@font/cardo"
+                    android:paddingLeft="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:text="city"
+                android:visibility="gone" />
+
+            <RadioGroup
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="8dp"
+                android:paddingVertical="5dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/male"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/cardo"
+                    android:layout_height="wrap_content"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/female"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/cardo"
+                    android:layout_height="wrap_content"
+                    android:text="Female" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn1_bg"
+                    android:text="@string/register"
+                    android:fontFamily="@font/cardo"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/btsi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:text="Login"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/cardo"
+                    android:background="@drawable/btn2_bg"
+                    android:textColor="#ffffff"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/sign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="100dp"
+                android:gravity="center_horizontal"
+                android:text="If already Registered. Login"
+                android:fontFamily="@font/cardo"
+                android:textAlignment="center"
+                android:textColor="#707070"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="214dp"
+                android:layout_height="wrap_content">
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/relativeLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
