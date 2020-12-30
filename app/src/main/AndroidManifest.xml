@@ -16,8 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".takeAttendenceActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".AttendenceDataFirebaseActivity"></activity>
+        <activity android:name=".ShowSavedDataActivity" />
+        <activity android:name=".takeAttendenceActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".PhoneVerification" />
         <activity android:name=".completedActivity" />
         <activity android:name=".signin">

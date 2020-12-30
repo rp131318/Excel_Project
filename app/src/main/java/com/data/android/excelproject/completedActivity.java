@@ -101,6 +101,15 @@ public class completedActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.savedData).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(completedActivity.this, ShowSavedDataActivity.class));
+
+            }
+        });
+
     }
 
 
