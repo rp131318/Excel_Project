@@ -40,6 +40,29 @@ public class AttendenceDataFirebaseActivity extends AppCompatActivity {
 
 
     @Override
+    public void onBackPressed() {
+
+        List<String> aa = takeAttendenceAdapter.presentAbsentList;
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String id = currentFirebaseUser.getUid();
+
+        Log.e("TAG", "onClick: presentAbsentList " + aa);
+
+//                reference.child(id).child(yr + "~~" + date).removeValue();
+
+
+        for (int i = 0; i < aa.size(); i++) {
+            Log.e("TAG", "onClick: 1");
+            reference.child(id).child(yr + "~~" + date).child(String.valueOf(i + 1)).setValue(aa.get(i).toString());
+            Log.e("TAG", "onClick: 1");
+        }
+
+//        Toast.makeText(AttendenceDataFirebaseActivity.this, "Data Changed...", Toast.LENGTH_SHORT).show();
+
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendence_data_firebase);
@@ -89,30 +112,6 @@ public class AttendenceDataFirebaseActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-
-
-        findViewById(R.id.saveAllBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List<String> aa = takeAttendenceAdapter.presentAbsentList;
-                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                String id = currentFirebaseUser.getUid();
-
-                Log.e("TAG", "onClick: presentAbsentList " + aa);
-
-//                reference.child(id).child(yr + "~~" + date).removeValue();
-
-
-                for (int i = 0; i < aa.size(); i++) {
-                    Log.e("TAG", "onClick: 1");
-                    reference.child(id).child(yr + "~~" + date).child(String.valueOf(i + 1)).setValue(aa.get(i).toString());
-                    Log.e("TAG", "onClick: 1");
-                }
-
-                Toast.makeText(AttendenceDataFirebaseActivity.this, "Data Changed...", Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(AttendenceDataFirebaseActivity.this, AttendenceDataFirebaseActivity.class));
             }
         });
 

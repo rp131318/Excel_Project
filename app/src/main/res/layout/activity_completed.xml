@@ -21,28 +21,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
-    <ImageView
-        android:id="@+id/savedData"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_margin="6dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/savecolor"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/takeAttendence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="30dp"
-        android:src="@drawable/add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-
-
-
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -135,11 +113,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginHorizontal="80dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="60dp"
                 android:background="@drawable/btn_bg"
                 android:fontFamily="@font/cardo"
-                android:text="Choose File"
+                android:text="Import Sheet"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
                 android:textSize="18sp"
@@ -147,16 +125,52 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
+            <Button
+                android:id="@+id/takeAttendence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="50dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn1_bg"
                 android:fontFamily="@font/cardo"
-                android:text="Choose .csv file only..."
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="16sp" />
+                android:text="Take Attendence"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/savedData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="80dp"
+                android:background="@drawable/btn1_bg"
+                android:fontFamily="@font/cardo"
+                android:text="View Attendence"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="5dp"-->
+            <!--                android:layout_marginBottom="50dp"-->
+            <!--                android:fontFamily="@font/cardo"-->
+            <!--                android:text="Choose .csv file only..."-->
+            <!--                android:textAlignment="center"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="16sp" />-->
 
 
         </LinearLayout>

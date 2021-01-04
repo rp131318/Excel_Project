@@ -20,16 +20,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/saveAllBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp"
-        android:src="@drawable/save"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -47,10 +37,10 @@
                 android:id="@+id/dateYrText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
                 android:text="Date : 26-03-2000  Yr : 2"
                 android:textColor="#000"
-                android:textSize="20sp"
-                android:paddingLeft="20dp"/>
+                android:textSize="20sp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardLayout"
@@ -74,8 +64,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginBottom="130dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="130dp"
                 android:orientation="vertical">
 
                 <LinearLayout
