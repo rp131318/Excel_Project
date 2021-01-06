@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:text="Date : 26-03-2000  Yr : 2"
-                android:textColor="#000"
+                android:textColor="@color/colorAccent"
                 android:textSize="20sp" />
 
             <androidx.cardview.widget.CardView

@@ -33,30 +33,32 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/yearId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:background="#fff"
+                android:inputType="number"
+                android:paddingVertical="6dp"
+                android:paddingLeft="10dp"
+                android:text="Semester of Students..."
+                android:textColor="#000"
+                android:textSize="22sp" />
+
             <EditText
                 android:id="@+id/numberInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 android:background="#fff"
                 android:hint="Number of Students..."
                 android:inputType="number"
                 android:paddingVertical="6dp"
                 android:paddingLeft="10dp" />
 
-
-            <EditText
-                android:id="@+id/yearId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
-                android:background="#fff"
-                android:hint="Year of Students..."
-                android:inputType="number"
-                android:paddingVertical="6dp"
-                android:paddingLeft="10dp" />
 
             <Button
                 android:id="@+id/makeSheetBtn"
@@ -179,7 +181,6 @@
         </LinearLayout>
 
     </ScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

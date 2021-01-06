@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,10 +31,12 @@ public class takeAttendenceActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     takeAttendenceAdapter takeAttendenceAdapter;
-    EditText editText, yearId;
+    EditText editText;
+    TextView yearId;
     List<model> list = new ArrayList<>();
     Button present, absent;
     String date;
+    String sem;
     List<String> aa;
     boolean check = false;
 
@@ -89,6 +92,14 @@ public class takeAttendenceActivity extends AppCompatActivity {
         recyclerView.setVisibility(View.GONE);
         present.setVisibility(View.GONE);
         absent.setVisibility(View.GONE);
+
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        sem = bundle.getString("sem");
+
+        yearId.setText(sem);
+//        yr = bundle.getString("yr");
+
 
         date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
                 .format(new Date());

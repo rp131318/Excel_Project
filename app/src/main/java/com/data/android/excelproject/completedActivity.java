@@ -94,10 +94,17 @@ public class completedActivity extends AppCompatActivity {
         });
 
 
+        findViewById(R.id.accountBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(completedActivity.this, AccountProfile.class));
+            }
+        });
+
         findViewById(R.id.takeAttendence).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(completedActivity.this, takeAttendenceActivity.class));
+                startActivity(new Intent(completedActivity.this, SelectYearActivity.class));
             }
         });
 

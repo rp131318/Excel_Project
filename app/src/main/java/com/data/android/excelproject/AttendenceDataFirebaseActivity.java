@@ -79,7 +79,7 @@ public class AttendenceDataFirebaseActivity extends AppCompatActivity {
         date = bundle.getString("date");
         yr = bundle.getString("yr");
 
-        dateyrText.setText("Date : " + date + "   yr : " + yr);
+        dateyrText.setText("Date : " + date + " \nSem : " + yr);
 
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String id = currentFirebaseUser.getUid();
