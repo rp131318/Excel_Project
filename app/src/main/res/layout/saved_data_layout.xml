@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="6dp"
+        android:backgroundTint="#F6CCBE"
         android:elevation="20dp"
         app:cardCornerRadius="12dp">
 

@@ -4,6 +4,7 @@ package com.data.android.excelproject;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,8 +12,10 @@ import android.os.Environment;
 import android.os.FileUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +52,9 @@ public class completedActivity extends AppCompatActivity {
     calenderAdapter calenderAdapter;
     LinearLayout detail_msg;
     CardView cardView;
+    Spinner dropdown;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor myEdit;
 //    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15, btn16, btn17, btn18, btn19, btn20,
 //            btn21, btn22, btn23, btn0;
 
@@ -75,6 +81,17 @@ public class completedActivity extends AppCompatActivity {
             }
         }).check();
 
+        dropdown = findViewById(R.id.spinner1);
+        dropdown.setVisibility(View.GONE);
+//create a list of items for the spinner.
+        String[] items = new String[]{"1st Semester", "2nd Semester", "3rd Semester", "4th Semester", "5th Semester", "6th Semester",
+                "7th Semester", "8th Semester"};
+//create an adapter to describe how the items are displayed, adapters are used in several places in android.
+//There are multiple variations of this, but this is the basic variant.
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+//set the spinners adapter to the previously created one.
+        dropdown.setAdapter(adapter);
+
         recyclerView = findViewById(R.id.calenderView);
         detail_msg = findViewById(R.id.detail_msg);
         detail_msg.setVisibility(View.GONE);
@@ -83,6 +100,9 @@ public class completedActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 5));
 
+        sharedPreferences = getSharedPreferences("StudentNumber",
+                MODE_PRIVATE);
+        myEdit = sharedPreferences.edit();
 
         findViewById(R.id.chooseFile).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,11 +197,15 @@ public class completedActivity extends AppCompatActivity {
                 list.add(model);
             }
 
+            myEdit.putString("studentNumber", String.valueOf(number.size()));
+            myEdit.commit();
+
 
             calenderAdapter = new calenderAdapter(list);
             recyclerView.setAdapter(calenderAdapter);
             cardView.setVisibility(View.VISIBLE);
             detail_msg.setVisibility(View.VISIBLE);
+            dropdown.setVisibility(View.VISIBLE);
 
 
         } catch (FileNotFoundException e) {

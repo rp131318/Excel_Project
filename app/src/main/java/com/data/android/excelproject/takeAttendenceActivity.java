@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,7 +32,7 @@ public class takeAttendenceActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     takeAttendenceAdapter takeAttendenceAdapter;
-    EditText editText;
+    TextView editText;
     TextView yearId;
     List<model> list = new ArrayList<>();
     Button present, absent;
@@ -97,36 +98,37 @@ public class takeAttendenceActivity extends AppCompatActivity {
         assert bundle != null;
         sem = bundle.getString("sem");
 
+
         yearId.setText(sem);
 //        yr = bundle.getString("yr");
 
+        final SharedPreferences sh
+                = getSharedPreferences("StudentNumber",
+                MODE_PRIVATE);
 
         date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
                 .format(new Date());
 
+        editText.setText("Date : " + date);
+
         reference = FirebaseDatabase.getInstance().getReference();
 
-        findViewById(R.id.makeSheetBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (editText.getText().length() > 0 && yearId.getText().length() > 0) {
-                    list.clear();
-                    String i = editText.getText().toString();
-                    int cc = Integer.parseInt(i);
+        if (editText.getText().length() > 0 && yearId.getText().length() > 0) {
+            list.clear();
+            String s1 = sh.getString("studentNumber", "15");
+            int cc = Integer.parseInt(s1);
 
-                    for (int ii = 0; ii < cc; ii++) {
-                        model model = new model("No Data", yearId);
-                        list.add(model);
-                    }
-                    takeAttendenceAdapter = new takeAttendenceAdapter(list);
-                    recyclerView.setAdapter(takeAttendenceAdapter);
-                    recyclerView.setVisibility(View.VISIBLE);
-                    absent.setVisibility(View.VISIBLE);
-                    present.setVisibility(View.VISIBLE);
-                    check = true;
-                }
+            for (int ii = 0; ii < cc; ii++) {
+                model model = new model("No Data", yearId);
+                list.add(model);
             }
-        });
+            takeAttendenceAdapter = new takeAttendenceAdapter(list);
+            recyclerView.setAdapter(takeAttendenceAdapter);
+            recyclerView.setVisibility(View.VISIBLE);
+            absent.setVisibility(View.VISIBLE);
+            present.setVisibility(View.VISIBLE);
+            check = true;
+        }
 
 
         absent.setOnClickListener(new View.OnClickListener() {
@@ -134,8 +136,8 @@ public class takeAttendenceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (editText.getText().length() > 0 && yearId.getText().length() > 0) {
                     list.clear();
-                    String i = editText.getText().toString();
-                    int cc = Integer.parseInt(i);
+                    String s1 = sh.getString("studentNumber", "15");
+                    int cc = Integer.parseInt(s1);
 
                     for (int ii = 0; ii < cc; ii++) {
                         model model = new model("Absent", yearId);
@@ -153,8 +155,8 @@ public class takeAttendenceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (editText.getText().length() > 0 && yearId.getText().length() > 0) {
                     list.clear();
-                    String i = editText.getText().toString();
-                    int cc = Integer.parseInt(i);
+                    String s1 = sh.getString("studentNumber", "15");
+                    int cc = Integer.parseInt(s1);
 
                     for (int ii = 0; ii < cc; ii++) {
                         model model = new model("Present", yearId);
