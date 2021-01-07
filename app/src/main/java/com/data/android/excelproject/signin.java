@@ -51,7 +51,7 @@ public class signin extends AppCompatActivity {
 
                 if (mFirebaseUser != null) {
                     Toast.makeText(signin.this, "Sign In successful", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(signin.this, completedActivity.class);
+                    Intent i = new Intent(signin.this, HomePage.class);
                     startActivity(i);
                 } else {
 //                    Toast.makeText(signin.this, "You are not Register", Toast.LENGTH_SHORT).show();
@@ -161,7 +161,7 @@ public class signin extends AppCompatActivity {
 
         if (mFirebaseUser != null) {
             Toast.makeText(signin.this, "Sign In successful", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(signin.this, completedActivity.class);
+            Intent i = new Intent(signin.this, HomePage.class);
             startActivity(i);
         }
 

@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.os.FileUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -53,6 +54,7 @@ public class completedActivity extends AppCompatActivity {
     LinearLayout detail_msg;
     CardView cardView;
     Spinner dropdown;
+    String savedKey = "1st Semester";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor myEdit;
 //    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15, btn16, btn17, btn18, btn19, btn20,
@@ -82,15 +84,28 @@ public class completedActivity extends AppCompatActivity {
         }).check();
 
         dropdown = findViewById(R.id.spinner1);
-        dropdown.setVisibility(View.GONE);
+//        dropdown.setVisibility(View.GONE);
 //create a list of items for the spinner.
-        String[] items = new String[]{"1st Semester", "2nd Semester", "3rd Semester", "4th Semester", "5th Semester", "6th Semester",
+        final String[] items = new String[]{"1st Semester", "2nd Semester", "3rd Semester", "4th Semester", "5th Semester", "6th Semester",
                 "7th Semester", "8th Semester"};
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
 //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
 //set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
+
+
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                savedKey = items[position].toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         recyclerView = findViewById(R.id.calenderView);
         detail_msg = findViewById(R.id.detail_msg);
@@ -114,35 +129,11 @@ public class completedActivity extends AppCompatActivity {
         });
 
 
-        findViewById(R.id.accountBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(completedActivity.this, AccountProfile.class));
-            }
-        });
 
-        findViewById(R.id.takeAttendence).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(completedActivity.this, SelectYearActivity.class));
-            }
-        });
-
-        findViewById(R.id.savedData).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(completedActivity.this, ShowSavedDataActivity.class));
-
-            }
-        });
 
     }
 
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "Press home to exit...", Toast.LENGTH_SHORT).show();
-    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -197,7 +188,9 @@ public class completedActivity extends AppCompatActivity {
                 list.add(model);
             }
 
-            myEdit.putString("studentNumber", String.valueOf(number.size()));
+//            myEdit.putString("studentNumber", String.valueOf(number.size()));
+            myEdit.putString(savedKey, String.valueOf(number.size()));
+
             myEdit.commit();
 
 
