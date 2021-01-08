@@ -136,7 +136,7 @@ public class takeAttendenceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (editText.getText().length() > 0 && yearId.getText().length() > 0) {
                     list.clear();
-                    String s1 = sh.getString("studentNumber", "15");
+                    String s1 = sh.getString(sem, "15");
                     int cc = Integer.parseInt(s1);
 
                     for (int ii = 0; ii < cc; ii++) {
@@ -155,7 +155,7 @@ public class takeAttendenceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (editText.getText().length() > 0 && yearId.getText().length() > 0) {
                     list.clear();
-                    String s1 = sh.getString("studentNumber", "15");
+                    String s1 = sh.getString(sem, "15");
                     int cc = Integer.parseInt(s1);
 
                     for (int ii = 0; ii < cc; ii++) {
