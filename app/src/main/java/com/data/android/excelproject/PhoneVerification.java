@@ -35,7 +35,7 @@ public class PhoneVerification extends AppCompatActivity {
     String verificationId;
     private FirebaseAuth mAuth;
     ProgressBar progressBar;
-    String name, email, city , phone, age, gender, password,codenum;
+    String name, email, city, phone, age, gender, password, codenum;
     EditText numberentered;
     Button verify;
     SharedPreferences sharedPreferences;
@@ -102,7 +102,7 @@ public class PhoneVerification extends AppCompatActivity {
         signInWithCredential(credential);
     }
 
-//    private void linkPhoneAuthToCurrentUser(PhoneAuthCredential credential) {
+    //    private void linkPhoneAuthToCurrentUser(PhoneAuthCredential credential) {
 //        mAuth.getInstance().getCurrentUser().linkWithCredential(credential)
 //                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 //                    @Override
@@ -124,7 +124,7 @@ public class PhoneVerification extends AppCompatActivity {
                 .addOnCompleteListener(PhoneVerification.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
+                        if (task.isSuccessful()) {
 
                             emailauth();
                             auth();
@@ -152,12 +152,11 @@ public class PhoneVerification extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
 //                            Toast.makeText(PhoneVerification.this, "step 1 pass", Toast.LENGTH_LONG).show();
-                            Log.e("TAG", "onComplete: step 1 pass " );
-                        }
-                        else {
+                            Log.e("TAG", "onComplete: step 1 pass ");
+                        } else {
 
 //                            Toast.makeText(PhoneVerification.this, "step 1 fail", Toast.LENGTH_LONG).show();
-                            Log.e("TAG", "onComplete: step 1 fail " );
+                            Log.e("TAG", "onComplete: step 1 fail ");
 
                         }
                     }
@@ -165,7 +164,7 @@ public class PhoneVerification extends AppCompatActivity {
                 });
     }
 
-    private void auth(){
+    private void auth() {
 
         Toast.makeText(PhoneVerification.this, "step1", Toast.LENGTH_SHORT).show();
         User user = new User(
@@ -191,7 +190,7 @@ public class PhoneVerification extends AppCompatActivity {
         });
 
     }
-
+// 1st
     private void sendVerificationCode(String PhoneNum) {
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -203,7 +202,7 @@ public class PhoneVerification extends AppCompatActivity {
         );
 
     }
-
+//2nd
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks
             mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
@@ -212,7 +211,6 @@ public class PhoneVerification extends AppCompatActivity {
             super.onCodeSent(s, forceResendingToken);
             verificationId = s;
         }
-
 
 
         @Override

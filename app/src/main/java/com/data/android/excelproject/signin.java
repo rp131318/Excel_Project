@@ -29,7 +29,6 @@ public class signin extends AppCompatActivity {
     TextView reg, fp;
     FirebaseAuth mFirebaseAuth;
 
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,23 +42,6 @@ public class signin extends AppCompatActivity {
         reg = findViewById(R.id.account);
         fp = findViewById(R.id.forgotpass);
 
-        // checking user is already loging or not.................
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
-
-                if (mFirebaseUser != null) {
-                    Toast.makeText(signin.this, "Sign In successful", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(signin.this, HomePage.class);
-                    startActivity(i);
-                } else {
-//                    Toast.makeText(signin.this, "You are not Register", Toast.LENGTH_SHORT).show();
-                }
-
-
-            }
-        };
 
         // forgot password code to ask user to give register email so we can send code from firebase..............
         fp.setOnClickListener(new View.OnClickListener() {
@@ -132,8 +114,8 @@ public class signin extends AppCompatActivity {
 
                                 Toast.makeText(signin.this, "Error!, Please try again.", Toast.LENGTH_SHORT).show();
                             } else {
-//                                Intent ihome = new Intent(signin.this, PopUpActivity.class);
-//                                startActivity(ihome);
+                                Intent ihome = new Intent(signin.this, HomePage.class);
+                                startActivity(ihome);
                             }
                         }
                     });
@@ -165,7 +147,7 @@ public class signin extends AppCompatActivity {
             startActivity(i);
         }
 
-        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+//        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
         super.onStart();
     }
 }

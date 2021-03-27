@@ -57,6 +57,8 @@ public class completedActivity extends AppCompatActivity {
     String savedKey = "1st Semester";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor myEdit;
+    String start, end;
+    int count = 0;
 //    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15, btn16, btn17, btn18, btn19, btn20,
 //            btn21, btn22, btn23, btn0;
 
@@ -129,10 +131,7 @@ public class completedActivity extends AppCompatActivity {
         });
 
 
-
-
     }
-
 
 
     @Override
@@ -172,6 +171,9 @@ public class completedActivity extends AppCompatActivity {
 
             while ((csvLine = reader.readLine()) != null) {
                 data = csvLine.split(",");
+//                start = data[0].toString().substring(0, 2);
+//                count = data[0].length();
+//                end = data[0].substring(data[0].length() - 2, count);
                 number.add(data[0]);
                 present.add(data[1]);
                 try {
@@ -190,7 +192,6 @@ public class completedActivity extends AppCompatActivity {
 
 //            myEdit.putString("studentNumber", String.valueOf(number.size()));
             myEdit.putString(savedKey, String.valueOf(number.size()));
-
             myEdit.commit();
 
 
@@ -230,24 +231,24 @@ public class completedActivity extends AppCompatActivity {
     }
 
     // taking path of file..............................
-    public static String TakePath(Context context, Uri uri) {
-        if ("content".equalsIgnoreCase(uri.getScheme())) {
-            String[] projection = {"_data"};
-            Cursor cursor = null;
-
-            try {
-                cursor = context.getContentResolver().query(uri, projection, null, null, null);
-                int column_index = cursor.getColumnIndexOrThrow("_data");
-                if (cursor.moveToFirst()) {
-                    return cursor.getString(column_index);
-                }
-            } catch (Exception e) {
-                // Eat it
-            }
-        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
-            return uri.getPath();
-        }
-
-        return null;
-    }
+//    public static String TakePath(Context context, Uri uri) {
+//        if ("content".equalsIgnoreCase(uri.getScheme())) {
+//            String[] projection = {"_data"};
+//            Cursor cursor = null;
+//
+//            try {
+//                cursor = context.getContentResolver().query(uri, projection, null, null, null);
+//                int column_index = cursor.getColumnIndexOrThrow("_data");
+//                if (cursor.moveToFirst()) {
+//                    return cursor.getString(column_index);
+//                }
+//            } catch (Exception e) {
+//                // Eat it
+//            }
+//        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
+//            return uri.getPath();
+//        }
+//
+//        return null;
+//    }
 }

@@ -22,6 +22,7 @@ public class takeAttendenceAdapter extends RecyclerView.Adapter<takeAttendenceAd
 
     private List<model> models;
     private Context context;
+    public boolean isClickable = true;
 
     public List<String> presentAbsentList = new ArrayList<>();
 
@@ -64,42 +65,45 @@ public class takeAttendenceAdapter extends RecyclerView.Adapter<takeAttendenceAd
             Log.e("TAG", "onClick: present");
             Log.e("TAG", "onClick: " + holder.tempText.getText());
 
-        }else {
+        } else {
             presentAbsentList.add("No Data");
         }
 
-        holder.number.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (holder.tempText.getText().toString()) {
+            holder.number.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (isClickable){
+                        switch (holder.tempText.getText().toString()) {
 
-                    case "No Data":
-                        holder.tempText.setText("Present");
-                        presentAbsentList.set(position, "Present");
-                        Log.e("TAG", "onClick: " + holder.tempText.getText());
-                        holder.number.setBackgroundColor(Color.parseColor("#4CAF50"));
-                        Log.e("TAG", "onClick: no data");
-                        break;
-                    case "Present":
-                        holder.tempText.setText("Absent");
-                        presentAbsentList.set(position, "Absent");
-                        holder.number.setBackgroundColor(Color.parseColor("#F44336"));
-                        Log.e("TAG", "onClick: absent");
-                        Log.e("TAG", "onClick: " + holder.tempText.getText());
-                        break;
-                    case "Absent":
-                        holder.tempText.setText("Present");
-                        presentAbsentList.set(position, "Present");
-                        holder.number.setBackgroundColor(Color.parseColor("#4CAF50"));
-                        Log.e("TAG", "onClick: present");
-                        Log.e("TAG", "onClick: " + holder.tempText.getText());
-                        break;
+                            case "No Data":
+                                holder.tempText.setText("Present");
+                                presentAbsentList.set(position, "Present");
+                                Log.e("TAG", "onClick: " + holder.tempText.getText());
+                                holder.number.setBackgroundColor(Color.parseColor("#4CAF50"));
+                                Log.e("TAG", "onClick: no data");
+                                break;
+                            case "Present":
+                                holder.tempText.setText("Absent");
+                                presentAbsentList.set(position, "Absent");
+                                holder.number.setBackgroundColor(Color.parseColor("#F44336"));
+                                Log.e("TAG", "onClick: absent");
+                                Log.e("TAG", "onClick: " + holder.tempText.getText());
+                                break;
+                            case "Absent":
+                                holder.tempText.setText("Present");
+                                presentAbsentList.set(position, "Present");
+                                holder.number.setBackgroundColor(Color.parseColor("#4CAF50"));
+                                Log.e("TAG", "onClick: present");
+                                Log.e("TAG", "onClick: " + holder.tempText.getText());
+                                break;
 
 
+                        }
+                    }
                 }
+            });
 
-            }
-        });
+
 
 
     }

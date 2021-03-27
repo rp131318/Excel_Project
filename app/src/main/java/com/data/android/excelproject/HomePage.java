@@ -1,7 +1,9 @@
 package com.data.android.excelproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -48,6 +50,30 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(HomePage.this, ShowSavedDataActivity.class));
+
+            }
+        });
+
+        findViewById(R.id.lessAttendence).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(HomePage.this);
+                builder.setTitle("Select Student Semester");
+
+                String[] animals = {"Semester 1", "Semester 2", "Semester 3", "Semester 4",
+                        "Semester 5", "Semester 6", "Semester 7", "Semester 8"};
+                builder.setItems(animals, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(HomePage.this, lessAttendanceActivity.class)
+                                .putExtra("semesterStudent", String.valueOf(which + 1)));
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+//                startActivity(new Intent(HomePage.this, ShowSavedDataActivity.class));
 
             }
         });

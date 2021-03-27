@@ -2,6 +2,7 @@ package com.data.android.excelproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.TooltipCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -73,6 +74,8 @@ public class AttendenceDataFirebaseActivity extends AppCompatActivity {
 
         list.clear();
 
+
+
         Bundle bundle = getIntent().getExtras();
         reference = FirebaseDatabase.getInstance().getReference();
         assert bundle != null;
@@ -83,6 +86,14 @@ public class AttendenceDataFirebaseActivity extends AppCompatActivity {
 
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String id = currentFirebaseUser.getUid();
+
+        findViewById(R.id.editDataBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                takeAttendenceAdapter.isClickable = true;
+            }
+        });
+        TooltipCompat.setTooltipText(findViewById(R.id.editDataBtn), "Click to edit");
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child(id).child(yr + "~~" + date);
 
@@ -102,6 +113,7 @@ public class AttendenceDataFirebaseActivity extends AppCompatActivity {
                 }
                 takeAttendenceAdapter = new takeAttendenceAdapter(list);
                 recyclerView.setAdapter(takeAttendenceAdapter);
+                takeAttendenceAdapter.isClickable = false;
 
                 Log.e("TAG", "onDataChange: " + presentAbsentArrayList);
                 Log.e("TAG", "onDataChange: " + list);

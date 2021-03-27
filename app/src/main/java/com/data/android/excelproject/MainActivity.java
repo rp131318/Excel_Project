@@ -48,17 +48,17 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,LocationListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, LocationListener {
 
     // variables declare here bellow.............
 
-    private EditText editTextName, editTextEmail, editTextPassword, editTextPhone,editTextage;
+    private EditText editTextName, editTextEmail, editTextPassword, editTextPhone, editTextage;
     private TextView editTextcity;
     private ProgressBar progressBar;
     Button button_signin;
-    RadioButton  select;
+    RadioButton select;
     RadioGroup selectgender;
-    String name,email,password,age,phone,gender,city;
+    String name, email, password, age, phone, gender, city;
     private FirebaseAuth mAuth;
     LocationManager locationManager;
     SharedPreferences sharedPreferences;
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onCheckedChanged(RadioGroup group, int i) {
 
                 select = selectgender.findViewById(i);
-                switch (i){
+                switch (i) {
 
                     case R.id.male:
                         gender = select.getText().toString();
@@ -126,27 +126,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (mAuth.getCurrentUser() != null) {
-//
-//
-////            startActivity(new Intent(MainActivity.this, homePageActivity.class));
-//
-//
-////            String phone = editTextPhone.getEditableText().toString();
-////            Intent log = new Intent(MainActivity.this, PhoneVerification.class);
-////            log.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-////            log.putExtra("phoneNumber", phone);
-////            startActivity(log);
-        }
-    }
-
 // taking information of user and storing in database.......................
 
     private void registerUser() {
@@ -174,11 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            num.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             num.putExtra("phoneNumber", phone);
             startActivity(num);
-        }
-
-
-
-        else {
+        } else {
 
             if (phone.isEmpty() || phone.length() < 10) {
                 editTextPhone.setError("Enter a valid mobile");
@@ -290,7 +265,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
             Log.e("TAG", "onLocationChanged: " + location.getLatitude() + location.getLongitude() + addresses.get(0).getLocality());
             String locality = addresses.get(0).getLocality();
-            Log.e("locality", "onLocationChanged: " + locality );
+            Log.e("locality", "onLocationChanged: " + locality);
             editTextcity.setText(addresses.get(0).getLocality());
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -308,7 +283,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         } catch (Exception e) {
 
-            Log.e("TAG", "onLocationChanged: " + e.getMessage() );
+            Log.e("TAG", "onLocationChanged: " + e.getMessage());
         }
 
     }

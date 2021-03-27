@@ -44,38 +44,38 @@ public class takeAttendenceActivity extends AppCompatActivity {
     DatabaseReference reference;
 
 
-    @Override
-    public void onBackPressed() {
-
-        if (editText.getText().length() > 0 && yearId.getText().length() > 0 && check) {
-            Log.e("TAG", "onBackPressed: ");
-            aa = takeAttendenceAdapter.presentAbsentList;
-            FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-            String id = currentFirebaseUser.getUid();
-
-            Log.e("TAG", "onClick: presentAbsentList " + aa);
-
-            String yrTemp = yearId.getText().toString();
-            date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-                    .format(new Date());
-            reference.child(id).child(yrTemp + "~~" + date).removeValue();
-
-
-            for (int i = 0; i < aa.size(); i++) {
-                Log.e("TAG", "onClick: 1");
-                reference.child(id).child(yrTemp + "~~" + date).child(String.valueOf(i + 1)).setValue(aa.get(i).toString());
-                Log.e("TAG", "onClick: 1");
-            }
-            Toast.makeText(this, "Data Saved in Database...", Toast.LENGTH_SHORT).show();
-            super.onBackPressed();
-
-        } else {
-            super.onBackPressed();
-
-        }
-
-
-    }
+//    @Override
+//    public void onBackPressed() {
+//
+////        if (editText.getText().length() > 0 && yearId.getText().length() > 0 && check) {
+////            Log.e("TAG", "onBackPressed: ");
+////            aa = takeAttendenceAdapter.presentAbsentList;
+////            FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+////            String id = currentFirebaseUser.getUid();
+////
+////            Log.e("TAG", "onClick: presentAbsentList " + aa);
+////
+////            String yrTemp = yearId.getText().toString();
+////            date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+////                    .format(new Date());
+////            reference.child(id).child(yrTemp + "~~" + date).removeValue();
+////
+////
+////            for (int i = 0; i < aa.size(); i++) {
+////                Log.e("TAG", "onClick: 1");
+////                reference.child(id).child(yrTemp + "~~" + date).child(String.valueOf(i + 1)).setValue(aa.get(i).toString());
+////                Log.e("TAG", "onClick: 1");
+////            }
+////            Toast.makeText(this, "Data Saved in Database...", Toast.LENGTH_SHORT).show();
+////            super.onBackPressed();
+////
+////        } else {
+////            super.onBackPressed();
+////
+////        }
+//
+//
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +129,34 @@ public class takeAttendenceActivity extends AppCompatActivity {
             present.setVisibility(View.VISIBLE);
             check = true;
         }
+
+        findViewById(R.id.saveDataBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (editText.getText().length() > 0 && yearId.getText().length() > 0 && check) {
+                    Log.e("TAG", "onBackPressed: ");
+                    aa = takeAttendenceAdapter.presentAbsentList;
+                    FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                    String id = currentFirebaseUser.getUid();
+
+                    Log.e("TAG", "onClick: presentAbsentList " + aa);
+
+                    String yrTemp = yearId.getText().toString();
+                    date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                            .format(new Date());
+                    reference.child(id).child(yrTemp + "~~" + date).removeValue();
+
+
+                    for (int i = 0; i < aa.size(); i++) {
+                        Log.e("TAG", "onClick: 1");
+                        reference.child(id).child(yrTemp + "~~" + date).child(String.valueOf(i + 1)).setValue(aa.get(i).toString());
+                        Log.e("TAG", "onClick: 1");
+                    }
+                    Toast.makeText(takeAttendenceActivity.this, "Data Saved in Database...", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
 
 
         absent.setOnClickListener(new View.OnClickListener() {
