@@ -193,10 +193,10 @@ public class lessAttendanceActivity extends AppCompatActivity {
                         Log.e("TAG", "makePercentageList: Added " + percentage);
                         presentAbsentDataPercentageData.add("Attendance : " + String.valueOf(percentage) + "%");
                         if (i < 10) {
-                            studentEnNumber.add("16009011100" + String.valueOf(i + 1));
+                            studentEnNumber.add("17009011100" + String.valueOf(i + 1));
 
                         } else {
-                            studentEnNumber.add("1600901110" + String.valueOf(i + 1));
+                            studentEnNumber.add("1700901110" + String.valueOf(i + 1));
                         }
                     }
 

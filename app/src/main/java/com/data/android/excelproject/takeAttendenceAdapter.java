@@ -48,7 +48,7 @@ public class takeAttendenceAdapter extends RecyclerView.Adapter<takeAttendenceAd
 
         holder.tempText.setText(number.toString());
         holder.number.setBackgroundColor(Color.parseColor("#AAAAAA"));
-        holder.number.setText("16_" + String.valueOf(position + 1));
+        holder.number.setText("17_" + String.valueOf(position + 1));
 
 
         if (number.toString().equals("Present")) {
