@@ -54,6 +54,15 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.timeTable).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(HomePage.this, timeTableActivity.class));
+
+            }
+        });
+
         findViewById(R.id.lessAttendence).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

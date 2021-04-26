@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth mAuth;
     LocationManager locationManager;
     SharedPreferences sharedPreferences;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,7 +138,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         password = editTextPassword.getText().toString().trim();
         phone = editTextPhone.getEditableText().toString();
 
-        if (!phone.isEmpty() && !email.isEmpty() && !city.isEmpty() && !password.isEmpty() && !phone.isEmpty() && !gender.isEmpty() && !age.isEmpty()) {
+
+        if (!phone.isEmpty() && !email.isEmpty() && !city.isEmpty() && email.matches(emailPattern) &&  !password.isEmpty() && !phone.isEmpty() && !gender.isEmpty() && !age.isEmpty()) {
 
             sharedPreferences = MainActivity.this.getSharedPreferences("filesper", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -168,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return;
             }
 
+
             if (age.isEmpty()) {
                 editTextage.setError(getString(R.string.input_error_name));
                 editTextage.requestFocus();
@@ -183,6 +186,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if (email.isEmpty()) {
                 editTextEmail.setError(getString(R.string.input_error_email));
+                editTextEmail.requestFocus();
+                return;
+            }
+
+            if (!email.matches(emailPattern)) {
+                editTextEmail.setError("Email is not correct");
                 editTextEmail.requestFocus();
                 return;
             }
